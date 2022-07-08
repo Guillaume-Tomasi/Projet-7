@@ -1,25 +1,11 @@
-* {
-  margin: 0;
-}
+/* #4e5166 */
+/* #FD2D01 */
+/* #ffd7d7 */
+
 nav {
-  width: 100%;
-}
-body {
-  font-family: "Lato", sans-serif;
-}
-
-.nav-container {
   background-color: #4e5166;
-  height: 100px;
-  display: flex;
-  align-items: center;
 }
 
-.logo {
-  width: 50px;
-}
-
-img {
-  max-width: 500px;
-  height: auto;
+body {
+  font-family: "Lato";
 }

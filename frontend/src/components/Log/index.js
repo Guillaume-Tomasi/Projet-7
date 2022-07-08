@@ -17,12 +17,12 @@ const Log = (props) => {
     }
 
     return (
-        <div className="connection-form">
-            <div className="form-container">
+        <div className="connection-form col-4 mx-auto">
+            <div className="form-control">
                 <ul>
 
-                    <button onClick={handleModals} id="register" className={signUpModal ? "active-btn" : null}>S'inscrire</button>
-                    <button onClick={handleModals} id="login" className={loginModal ? "active-btn" : null}>Se connecter</button>
+                    <button onClick={handleModals} id="register" className={signUpModal ? "btn btn-outline-primary" : "btn btn-outline-primary"}>S'inscrire</button>
+                    <button onClick={handleModals} id="login" className={loginModal ? "btn btn-outline-primary" : "btn btn-outline-primary"} >Se connecter</button>
 
                 </ul>
                 {signUpModal && <SignUpForm />}

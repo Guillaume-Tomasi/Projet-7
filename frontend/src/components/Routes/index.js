@@ -1,8 +1,9 @@
 import React from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Home from '../../pages/Home';
-import Profil from '../../pages/Profil';
+import Sign from '../../pages/Sign';
 import Navbar from '../Navbar';
+
 
 const index = () => {
     return (
@@ -10,7 +11,7 @@ const index = () => {
             <Navbar />
             <Routes>
                 <Route path='/' element={<Home />} />
-                <Route path='/user' element={<Profil />} />
+                <Route path='/user' element={<Sign />} />
                 <Route path='*' element={<Navigate to="/" />} />
             </Routes>
         </BrowserRouter>

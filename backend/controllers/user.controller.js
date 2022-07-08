@@ -82,6 +82,28 @@ exports.login = (req, res, next) => {
     })
 }
 
-// Déconnexion
+// Récupération d'un utilisateur
+module.exports.getUser = (req, res) => {
+    const getUser = `SELECT id, username, email, isadmin FROM user WHERE id = ${req.params.id};`;
+    db.query(getUser, (err, result) => {
+        if (!result) {
+            return res.status(404).json({ error: "Utilisateur non trouvé !" });
+        }
+        if (err) {
+            return res.status(400).json({ err: err.sqlMessage });
+        } res.send(result);
+    })
+}
 
-
+// Récupération de tous les utilisateurs
+module.exports.getAllUsers = (req, res) => {
+    const getAllUsers = `SELECT id, username, email, isadmin FROM user;`;
+    db.query(getAllUsers, (err, result) => {
+        if (!result) {
+            return res.status(404).json({ error: "Utilisateurs non trouvés !" });
+        }
+        if (err) {
+            return res.status(400).json({ err: err.sqlMessage });
+        } res.send(result);
+    })
+}

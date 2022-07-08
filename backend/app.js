@@ -6,7 +6,7 @@ const cors = require('cors');
 
 const userRoutes = require('./routes/user.routes');
 const postRoutes = require('./routes/post.routes');
-// const commentRoutes = require('./routes/comment.routes');
+const likeRoutes = require('./routes/like.routes');
 
 const app = express();
 app.use(express.json());
@@ -14,15 +14,16 @@ app.use(express.json());
 app.use(cors(
     {
         credentials: true,
-        origin: 'http://localhost:5000'
+        origin: true,
     }
 ));
+
 
 
 // Routes
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/user', userRoutes);
 app.use('/api/post', postRoutes);
-// app.use('/api/comment', commentRoutes);
+app.use('/api/like', likeRoutes);
 
 module.exports = app;

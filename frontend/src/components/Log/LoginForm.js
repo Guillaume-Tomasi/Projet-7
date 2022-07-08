@@ -30,18 +30,20 @@ const LoginForm = () => {
             })
     };
     return (
-        <form action="" onSubmit={handleLogin} id="Login-form">
-            <label htmlFor="email">Email</label>
-            <br />
-            <input type="email" name='email' id='email' onChange={(e) => setEmail(e.target.value)} value={email} required />
-            <br />
-            <label htmlFor="password">Mot de passe</label>
-            <br />
-            <input type="password" name='password' id='password' onChange={(e) => setPassword(e.target.value)} value={password} required />
-            <br />
-            <input type="submit" className='btn btn-primary' value="Se connecter" />
-            <div className="errorMsg"></div>
-        </form>
+        <div className="container">
+            <form action="" onSubmit={handleLogin} id="Login-form" className='row justify-content-center ' >
+                <label htmlFor="email">Email</label>
+                <br />
+                <input type="email" name='email' id='email' onChange={(e) => setEmail(e.target.value)} value={email} required />
+                <br />
+                <label htmlFor="password">Mot de passe</label>
+                <br />
+                <input type="password" name='password' id='password' onChange={(e) => setPassword(e.target.value)} value={password} required />
+                <br />
+                <input type="submit" className='btn btn-outline-primary' value="Se connecter" />
+                <div className="errorMsg"></div>
+            </form>
+        </div>
     );
 };
 

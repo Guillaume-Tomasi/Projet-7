@@ -3,7 +3,8 @@ const multer = require('multer');
 const MIME_TYPES = {
     'image/jpg': 'jpg',
     'image/jpeg': 'jpg',
-    'image/png': 'png'
+    'image/png': 'png',
+    'image/gif': 'gif'
 };
 
 
@@ -25,7 +26,7 @@ module.exports = multer({
     storage: storage,
     fileFilter: (req, file, callback) => {
         const extension = MIME_TYPES[file.mimetype];
-        if (extension !== 'jpg' && extension !== 'png') {
+        if (extension !== 'jpg' && extension !== 'png' && extension !== 'gif') {
             return callback(new Error("Format d'image invalide !"))
         }
         callback(null, true)

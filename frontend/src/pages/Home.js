@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Thread from '../components/Thread';
+import { UidContext } from '../components/AppContext';
+import Sign from './Sign';
+import NewPostForm from '../components/Post/NewPostForm';
 
 const Home = () => {
+    const uid = useContext(UidContext);
+
     return (
         <div>
-            <h1>Accueil</h1>
-            <br />
-            <a href="/user">Page utilisateur</a>
+            <div className="Home">
+                {uid ? (
+                    <>
+                        <NewPostForm />
+                        <Thread />
+                    </>)
+                    : <Sign />}
+            </div>
         </div>
     );
 };
