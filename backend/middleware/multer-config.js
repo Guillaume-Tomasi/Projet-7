@@ -1,4 +1,21 @@
 const multer = require('multer');
+const fs = require('fs');
+
+const dir = './images';
+
+fs.access(dir, (error) => {
+    if (error) {
+        fs.mkdir(dir, (error) => {
+            if (error) {
+                console.log(error);
+            } else {
+                console.log('Dossier "images" créé !');
+            }
+        });
+    } else {
+        console.log('Dossier "images" présent !');
+    }
+});
 
 const MIME_TYPES = {
     'image/jpg': 'jpg',

@@ -30,26 +30,31 @@ exports.signup = (req, res, next) => {
             // const findUserExists = `SELECT * FROM user WHERE username = '${req.body.username}' OR email = '${req.body.email}';`;
             const findUserName = `SELECT username FROM user WHERE username = '${req.body.username}';`;
             const findEmail = `SELECT email FROM user WHERE email = '${req.body.email}';`;
+            // const findIsAdmin = `SELECT isadmin FROM user WHERE isadmin = '${req.body.isadmin}';`;
 
-            db.query(findUserName, (err, result) => {
-                if (result.length) {
-                    return res.status(400).json({ err: "Nom d'utilisateur déjà existant" });
-                } else {
-                    db.query(findEmail, (err, result) => {
-                        if (result.length) {
-                            return res.status(400).json({ err: "Email déjà existant" });
-                        } else {
-                            db.query(createUser, req.body, (err, result) => {
-                                if (err) {
-                                    console.log(err)
-                                    return res.status(400).json({ err: err.sqlMessage });
-                                }
-                                res.status(201).json({ message: "Compte créé !" });
-                            })
-                        }
-                    })
-                }
-            });
+            if (req.body.isadmin) {
+                return res.status(401).json({ err: "Vous ne pouvez pas modifier un rôle" })
+            } else {
+                db.query(findUserName, (err, result) => {
+                    if (result.length) {
+                        return res.status(400).json({ err: "Nom d'utilisateur déjà existant" });
+                    } else {
+                        db.query(findEmail, (err, result) => {
+                            if (result.length) {
+                                return res.status(400).json({ err: "Email déjà existant" });
+                            } else {
+                                db.query(createUser, req.body, (err, result) => {
+                                    if (err) {
+                                        console.log(err)
+                                        return res.status(400).json({ err: err.sqlMessage });
+                                    }
+                                    res.status(201).json({ message: "Compte créé !" });
+                                })
+                            }
+                        })
+                    }
+                });
+            }
         })
         .catch(error => res.status(500).json({ error }));
 };
