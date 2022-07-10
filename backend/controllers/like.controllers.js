@@ -1,6 +1,7 @@
 const db = require('../config/dbConfig');
 
 // Récuperation de tous les likes
+
 module.exports.getAllLikes = (req, res) => {
     const getAllLikes = "SELECT * FROM likes;";
 
@@ -12,9 +13,8 @@ module.exports.getAllLikes = (req, res) => {
     })
 };
 
-
-
 // Création d'un like
+
 module.exports.createLike = (req, res) => {
     const owner_id = req.auth.userId;
     const post_id = req.body.post_id;
@@ -28,7 +28,6 @@ module.exports.createLike = (req, res) => {
                 return res.status(400).json({ err: "Vous avez déjà liké cette publication" })
             } else if (result[0].type === -1) {
                 return res.status(400).json({ err: "Vous avez déjà disliké cette publication" })
-
             }
         } else {
             db.query(createLike, (err, result) => {
@@ -39,19 +38,13 @@ module.exports.createLike = (req, res) => {
             })
         }
     })
-
-
-
-
 }
 
-
-
 // Suppression d'un like
+
 module.exports.deleteLike = (req, res) => {
     const getLike = `SELECT * FROM likes WHERE id = '${req.params.id}';`;
     const deleteLike = `DELETE FROM likes WHERE id = '${req.params.id}';`;
-
 
     db.query(getLike, (err, result) => {
         if (!result.length) {
@@ -69,9 +62,4 @@ module.exports.deleteLike = (req, res) => {
             });
         });
     });
-
-
-
-
-
 }

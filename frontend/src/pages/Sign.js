@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import { UidContext } from '../components/AppContext';
 import Log from '../components/Log';
 
+// Page de connexion
+
 const Sign = () => {
     const uid = useContext(UidContext);
 
@@ -11,7 +13,6 @@ const Sign = () => {
                 {uid ? window.location = "/" :
                     <Log login={true} signup={false} />
                 }
-
             </div>
         </div>
     );

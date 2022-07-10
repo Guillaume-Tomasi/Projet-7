@@ -2,6 +2,8 @@ import axios from 'axios';
 
 export const GET_USER = 'GET_USER';
 
+// Récupération d'un utilisateur
+
 export const getUser = (uid) => {
     return (dispatch) => {
         return axios

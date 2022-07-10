@@ -4,7 +4,6 @@ import Home from '../../pages/Home';
 import Sign from '../../pages/Sign';
 import Navbar from '../Navbar';
 
-
 const index = () => {
     return (
         <BrowserRouter>

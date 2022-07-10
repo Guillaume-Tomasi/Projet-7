@@ -5,6 +5,7 @@ export const ADD_POST = 'ADD_POST';
 export const UPDATE_POST = 'UPDATE_POST';
 
 
+// Récupération de toutes les publications
 
 export const getPosts = () => {
     return (dispatch) => {
@@ -22,6 +23,8 @@ export const getPosts = () => {
     };
 };
 
+// Création d'une publication
+
 export const addPost = (data) => {
     return (dispatch) => {
         axios({
@@ -35,9 +38,10 @@ export const addPost = (data) => {
             .then((res) => {
                 dispatch(getPosts());
             })
-
     };
 }
+
+// Modification d'une publication
 
 export const updatePost = (postId, content) => {
     return (dispatch) => {
@@ -56,6 +60,8 @@ export const updatePost = (postId, content) => {
             .catch((err) => console.log(err));
     }
 }
+
+// Suppression d'une publication
 
 export const deletePost = (postId) => {
     return (dispatch) => {

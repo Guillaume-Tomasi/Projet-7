@@ -1,7 +1,8 @@
 const multer = require('multer');
 const fs = require('fs');
-
 const dir = './images';
+
+// Création du dossier images si inexistant
 
 fs.access(dir, (error) => {
     if (error) {
@@ -24,6 +25,7 @@ const MIME_TYPES = {
     'image/gif': 'gif'
 };
 
+// Stockage de l'image
 
 const storage = multer.diskStorage({
     destination: (req, file, callback) => {
@@ -37,7 +39,7 @@ const storage = multer.diskStorage({
 
 });
 
-
+// Vérification du format d'image
 
 module.exports = multer({
     storage: storage,

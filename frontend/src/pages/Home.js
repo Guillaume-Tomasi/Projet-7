@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import Thread from '../components/Thread';
 import { UidContext } from '../components/AppContext';
 import Sign from './Sign';
-import NewPostForm from '../components/Post/NewPostForm';
+
+// Page d'accueil
 
 const Home = () => {
     const uid = useContext(UidContext);
@@ -10,9 +11,10 @@ const Home = () => {
     return (
         <div>
             <div className="Home">
+
+                {/* Affichage du fil d'actualité si l'utilisateur est connecté, sinon affichage de la page de connexion */}
                 {uid ? (
                     <>
-                        <NewPostForm />
                         <Thread />
                     </>)
                     : <Sign />}

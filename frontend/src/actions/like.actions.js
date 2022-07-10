@@ -1,9 +1,8 @@
 import axios from 'axios';
 
 export const GET_LIKES = 'GET_LIKES';
-// export const LIKE_POST = 'LIKE_POST';
-// export const UNLIKE_POST = 'UNLIKE_POST';
 
+// Récupération de tous les likes
 
 export const getLikes = () => {
     return (dispatch) => {
@@ -20,6 +19,8 @@ export const getLikes = () => {
             .catch((err) => console.log(err))
     };
 };
+
+// Création d'un like
 
 export const likePost = (post_id, type) => {
     return (dispatch) => {
@@ -40,6 +41,8 @@ export const likePost = (post_id, type) => {
             .catch((err) => console.log(err))
     }
 }
+
+// Suppression d'un like
 
 export const unlikePost = (likeId) => {
     return (dispatch) => {

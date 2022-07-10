@@ -18,8 +18,6 @@ app.use(cors(
     }
 ));
 
-
-
 // Routes
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/user', userRoutes);

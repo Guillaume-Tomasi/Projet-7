@@ -1,0 +1,58 @@
+$dark: #4e5166;
+$secondary: #ffd7d7;
+$primary: #fd2d01;
+
+* {
+  font-family: "Lato", sans-serif;
+}
+
+body {
+  background-color: $secondary;
+}
+
+.hover:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+#connect,
+#signup,
+#check-icon,
+.logout-button,
+.send-img,
+.send-button {
+  transform: scale(1);
+  transition: 0.1s;
+  &:hover {
+    transform: scale(1.03);
+    transition: transform();
+  }
+}
+
+.picture-input {
+  z-index: 99;
+  width: 24px;
+  height: 100%;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.input-image {
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+}
+
+@media screen and (max-width: 540px) {
+  * {
+    font-size: 3vw;
+  }
+}
+@media screen and (max-width: 900px) {
+  * {
+    font-size: 1.8vw;
+  }
+}
+
+@import "bootstrap";

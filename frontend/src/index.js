@@ -10,8 +10,7 @@ import { getUsers } from './actions/users.actions';
 // Devtools
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-
-
+// Création du store
 
 const store = createStore(
   rootReducer, composeWithDevTools(applyMiddleware(thunk))
@@ -19,13 +18,10 @@ const store = createStore(
 
 store.dispatch(getUsers());
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
   <Provider store={store}>
-
     <App />
   </Provider>
-
 );

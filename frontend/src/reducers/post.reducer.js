@@ -1,6 +1,5 @@
 import { GET_POSTS, UPDATE_POST } from '../actions/post.actions';
 
-
 const initialState = {};
 
 export default function postReducer(state = initialState, action) {
