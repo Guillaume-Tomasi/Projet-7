@@ -14,7 +14,7 @@ const SignUpForm = () => {
     const [usernameError, setUsernameError] = useState(false);
     const validEmail = new RegExp('^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$');
     const validPassword = new RegExp('^(?=.*?[A-Za-z])(?=.*?[0-9]).{6,}$');
-    const validUserName = new RegExp('^[A-Za-z][A-Za-z0-9_]{4, 29}$')
+    const validUserName = new RegExp('^[A-Za-z][A-Za-z0-9_]{4,29}$')
 
     const validate = () => {
         if (!validUserName.test(username)) {

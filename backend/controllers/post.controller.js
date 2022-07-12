@@ -46,13 +46,18 @@ module.exports.createPost = (req, res) => {
 module.exports.updatePost = (req, res, next) => {
     const getPost = `SELECT * FROM post WHERE id = '${req.params.id}';`;
     const updatePost = `UPDATE post SET ? WHERE id= '${req.params.id}';`;
+    const getAdmin = `SELECT * FROM user WHERE isadmin= '1';`;
 
     db.query(getPost, (err, result) => {
         if (!result.length) {
             return res.status(404).json({ error: "Publication non trouvée !" })
         }
-        if (result[0].owner_id !== req.auth.userId && req.auth.userId !== 1) {
-            return res.status(401).json({ error: "Requête non autorisée !" })
+        if (result[0].owner_id !== req.auth.userId) {
+            db.query(getAdmin, (err, result) => {
+                if (result[0].id !== req.auth.userId) {
+                    return res.status(401).json({ error: "Requête non autorisée !" })
+                }
+            })
         }
 
         db.query(updatePost, req.body, (err, result) => {
@@ -69,13 +74,18 @@ module.exports.updatePost = (req, res, next) => {
 module.exports.deletePost = (req, res) => {
     const getPost = `SELECT * FROM post WHERE id = '${req.params.id}';`;
     const deletePost = `DELETE FROM post WHERE id = '${req.params.id}';`;
+    const getAdmin = `SELECT * FROM user WHERE isadmin= '1';`;
 
     db.query(getPost, (err, result) => {
         if (!result.length) {
             return res.status(404).json({ error: "Publication non trouvée !" })
         }
-        if (result[0].owner_id !== req.auth.userId && req.auth.userId !== 1) {
-            return res.status(401).json({ error: "Requête non autorisée !" })
+        if (result[0].owner_id !== req.auth.userId) {
+            db.query(getAdmin, (err, result) => {
+                if (result[0].id !== req.auth.userId) {
+                    return res.status(401).json({ error: "Requête non autorisée !" })
+                }
+            })
         }
 
         const filename = result[0].image;

@@ -26,6 +26,7 @@ const Card = ({ post }) => {
     const [likeValue, setLikeValue] = useState(null);
     const [dislikeValue, setDislikeValue] = useState(null);
 
+    const userData = useSelector((state) => state.userReducer);
     const usersData = useSelector((state) => state.usersReducer);
     const likes = useSelector((state) => state.likeReducer);
     const uid = useContext(UidContext);
@@ -59,6 +60,7 @@ const Card = ({ post }) => {
         dispatch(getLikes());
     }
 
+
     // Fonction de modification du texte d'une publication
 
     const updateItem = async () => {
@@ -68,7 +70,7 @@ const Card = ({ post }) => {
         dispatch(getPosts());
         setIsUpdated(false);
     }
-    console.log(uid);
+
     useEffect(() => {
         !isEmpty(usersData) && setIsLoading(false);
         setLikeValue(countLikes);
@@ -77,11 +79,14 @@ const Card = ({ post }) => {
         setIsDisliked(false)
         if (!isEmpty(liked)) setIsLiked(true);
         if (!isEmpty(disLiked)) setIsDisliked(true);
-        if (uid === `${post.owner_id}` || uid === '1') {
+        if (uid === `${post.owner_id}`) {
+            setIsOwner(true);
+        }
+        if (!isEmpty(userData) && userData[0].isadmin === 1) {
             setIsOwner(true);
         }
     },
-        [usersData, likes, countLikes, countDislikes, isliked, liked, disLiked, uid, post.owner_id]
+        [usersData, userData, likes, countLikes, countDislikes, isliked, liked, disLiked, uid, post.owner_id]
     )
 
     return (
