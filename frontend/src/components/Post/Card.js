@@ -68,7 +68,7 @@ const Card = ({ post }) => {
         dispatch(getPosts());
         setIsUpdated(false);
     }
-
+    console.log(uid);
     useEffect(() => {
         !isEmpty(usersData) && setIsLoading(false);
         setLikeValue(countLikes);
