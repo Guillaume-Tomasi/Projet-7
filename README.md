@@ -5,9 +5,11 @@ Projet 7 du parcours Développeur Web d'Openclassrooms - "Créez un réseau soci
 Le projet consiste à construire un réseau social interne pour les employés de Groupomania. Le
 but de cet outil est de faciliter les interactions entre collègues. Le département RH de
 Groupomania a imaginé plusieurs fonctionnalités pour favoriser les échanges entre collègues.
+
 À partir du brief, tu vas devoir produire une toute première version
 du projet, que nous pourrons faire tester à quelques employés de Groupomania pour valider
 la partie fonctionnelle. 
+
 (Le code ne contient que les éléments prérequis afin de valider la soutenance.)
 
 ## Back-end 
